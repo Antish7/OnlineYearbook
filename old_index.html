@@ -1,0 +1,237 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yearbook Form</title>
+  <style>
+    body {
+      background-color: #070226;
+      color: #cc19e5;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-submit {
+      width: 30%;
+      padding: 10px;
+      border: 2px solid #cc19e5;
+      border-radius: 10px;
+      background-color: #cc19e5;
+      color: #070226;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s; /* Add a transition effect for smooth color changes */
+    }
+
+    .form-submit:hover {
+      background-color: #070226;
+      color: #cc19e5; /* Change text color when hovering */
+    }
+
+    .upload-button {
+      display: inline-block;
+      padding: 10px;
+      background-color: #cc19e5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s; /* Add a transition effect for smooth color changes */
+    }
+
+    .upload-button:hover {
+      background-color: #070226;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Yearbook Form</h1>
+  <div class="form-container">
+    <form action="save_data.php" method="POST" enctype="multipart/form-data">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" class="form-input" required>
+
+      <label for="photo">Photo:</label>
+      <input type="hidden" name="MAX_FILE_SIZE" value="5242880"> 
+      <input type="file" id="photo" name="photo" class="form-input" required accept="image/*">
+
+      <label for="division">Division:</label>
+      <input type="text" id="division" name="division" class="form-input" required>
+
+      <label for="roll-no">Roll No.:</label>
+      <input type="text" id="roll-no" name="roll-no" class="form-input" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" class="form-input" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" class="form-input" required>
+
+      <label for="thoughts">Thoughts:</label>
+      <textarea id="thoughts" name="thoughts" class="form-input" required></textarea>
+
+      <input type="submit" value="Submit" class="form-submit">
+    </form>
+  </div>
+</body>
+
+</html>
+-->
+
+<!--lmao this is v2 to fuck up your barins-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yearbook Form</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #070226, #cc19e5);
+      color: #cc19e5;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .nb {
+      color: #070226;
+    }
+
+    .form-submit {
+      width: 30%;
+      padding: 10px;
+      border: 2px solid #070226;
+      border-radius: 10px;
+      background-color: #cc19e5;
+      color: #070226;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .form-submit:hover {
+      background-color: #070226;
+      color: #cc19e5;
+    }
+
+    .upload-button {
+      display: inline-block;
+      padding: 10px;
+      background-color: #cc19e5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .upload-button:hover {
+      background-color: #070226;
+    }
+
+    /* Add a scroll gradient effect */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #070226;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cc19e5;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4b0961;
+    }
+  </style>
+  <script>
+      const thoughtsInput = document.getElementById('thoughts');
+const wordCountElement = document.getElementById('wordCount');
+
+thoughtsInput.addEventListener('input', function() {
+  const words = thoughtsInput.value.trim().split(/\s+/);
+  const wordCount = words.length;
+  
+  wordCountElement.textContent = wordCount + '/50 words';
+  
+  if (wordCount > 50) {
+    thoughtsInput.setCustomValidity('Please limit your thoughts to 50 words.');
+  } else {
+    thoughtsInput.setCustomValidity('');
+  }
+});
+
+  </script>
+</head>
+
+<body>
+  <h1>Yearbook Form</h1>
+  <div class="form-container">
+    <form action="save_data.php" method="POST" enctype="multipart/form-data">
+      <label for="name"><b>Name:</b>></label>
+      <input type="text" id="name" name="name" class="form-input" required>
+
+      <label for="photo"><b>Photo:</b>></label>
+      <input type="hidden" name="MAX_FILE_SIZE" value="5242880"> <!-- 5MB limit -->
+      <input type="file" id="photo" name="photo" class="form-input" required accept="image/*">
+
+      <label for="division"><b>Division:</b>></label>
+      <input type="text" id="division" name="division" class="form-input" required>
+
+      <label for="roll-no" class="nb"><b>Roll No.:</b>></label>
+      <input type="text" id="roll-no" name="roll-no" class="form-input" required>
+
+      <label for="phone" class="nb"><b>Phone Number</b>>:</label>
+      <input type="tel" id="phone" name="phone" class="form-input" required>
+
+      <label for="email" class="nb"><b>Email:</b></label>
+      <input type="email" id="email" name="email" class="form-input" required>
+
+      <label for="thoughts" class="nb"><b>Thoughts:</b></label>
+      <textarea id="thoughts" name="thoughts" class="form-input" required></textarea>
+
+      <input type="submit" value="Submit" class="form-submit">
+    </form>
+  </div>
+</body>
+
+</html>
