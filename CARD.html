@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The SDHHS Yearbook</title>
+  <style>
+    /* Add your custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 500px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #8e93e6;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%; /* Adjust the width as needed */
+      max-width: 200px; /* Adjust the max-width as needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .thoughts {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .photo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card-container" id="yearbookCards"></div>
+  </div>
+
+  <script>
+    // Sample XML data
+    const xmlData = `YOUR_XML_DATA`; // Replace with your actual XML data
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+
+    const entries = xmlDoc.getElementsByTagName("entry");
+
+    // Loop through each entry in the XML and create a yearbook card
+    for (let i = 0; i < entries.length; i++) {
+      const entry = entries[i];
+
+      const name = entry.getElementsByTagName("name")[0].textContent;
+      const thoughts = entry.getElementsByTagName("thoughts")[0].textContent;
+      const photo = entry.getElementsByTagName("photo")[0].textContent;
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      const nameElement = document.createElement("h2");
+      nameElement.classList.add("name");
+      nameElement.textContent = name;
+
+      const photoElement = document.createElement("img");
+      photoElement.classList.add("photo");
+      photoElement.src = photo;
+      photoElement.alt = "Photo";
+
+      const thoughtsElement = document.createElement("p");
+      thoughtsElement.classList.add("thoughts");
+      thoughtsElement.textContent = thoughts;
+
+      card.appendChild(nameElement);
+      card.appendChild(photoElement);
+      card.appendChild(thoughtsElement);
+
+      document.getElementById("yearbookCards").appendChild(card);
+    }
+  </script>
+</body>
+</html>
